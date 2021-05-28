@@ -1,35 +1,55 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
+const doctors = [
+  {
+    id: 1,
+    name: 'Exmaple 1',
+    avatar: 'https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop',
+    bio: "Hello this is the bio of example 1 and we need to review how to change it"
+  },
+  
+  {
+    id: 2,
+    name: 'Exmaple 2',
+    avatar: 'https://post.healthline.com/wp-content/uploads/2019/01/Male_Doctor_732x549-thumbnail.jpg',
+    bio: "Hello this is the bio of example 1 and we need to review how to change it"
+  },
+  {
+    id: 3,
+    name: 'Exmaple 3',
+    avatar: 'https://s3-eu-west-1.amazonaws.com/intercare-web-public/wysiwyg-uploads%2F1569586526901-doctor.jpg',
+    bio: "Hello this is the bio of example 1 and we need to review how to change it"
+  },
+  {
+    id: 4,
+    name: 'Exmaple 4',
+    avatar: 'https://i.guim.co.uk/img/media/ce9c149506881191caa4b1f838575d0dbb07e520/734_381_6827_4098/master/6827.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=c38e5e77b9f3882e14b633932e18cea5',
+    bio: "Hello this is the bio of example 1 and we need to review how to change it"
+  },
+
+]
+
 export default function EditScreenInfo({ path }: { path: string }) {
   return (
     <View>
       <View style={styles.getStartedContainer}>
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          Open up the code for this screen:
-        </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)">
-          <MonoText>{path}</MonoText>
-        </View>
-
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          Change any of the text, save the file, and your app will automatically update.
-        </Text>
+        {doctors.map(d => (
+          <Card containerStyle={{padding: 0, width: '100%'}}>
+            <Card.Title>d.name</Card.Title>
+            <Card.Image source={{ uri: d.avatar }} resizeMode="cover">
+            </Card.Image>
+            <Text>
+              {d.bio}
+            </Text>
+          </Card>
+        ))}
       </View>
 
       <View style={styles.helpContainer}>
